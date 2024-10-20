@@ -14,8 +14,8 @@ The **AsciiFicate** is a Python application that transforms digital images into 
 
 ## Dependencies
 
-This application utilizes the **Pillow** library for efficient image processing.
-To use your own images to transform, put them in `Images`.
+ - This application utilizes the **Pillow** library for efficient image processing.
+ - To use your own images to transform, put them in `Images`.
 
 ## Installation
 
