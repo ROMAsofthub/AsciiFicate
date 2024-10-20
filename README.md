@@ -13,9 +13,11 @@ The **AsciiFicate** is a Python application that transforms digital images into 
 - **Output**: Generates ASCII art and saves it to text files.
 
 ## How to use
- - Select an image with the numbers above
- - s
- - To use your own images, copy them in `Images`.
+ - Choose an image from the options above.
+ - Specify the desired width for the **AsciiFication** of the image.
+ - Indicate whether you want the colors to be inverted.
+
+###### To use your own images, copy them in `Images`.
 
 ## Installation
 
