@@ -15,6 +15,7 @@ The **AsciiFicate** is a Python application that transforms digital images into 
 ## Dependencies
 
 This application utilizes the **Pillow** library for efficient image processing.
+To use your own images to transform, put them in `Images`.
 
 ## Installation
 
@@ -30,4 +31,4 @@ This application utilizes the **Pillow** library for efficient image processing.
 4. **Execute the `exe.sh` file**: Run the executor to install the venv and the modules:
    ```bash
    ./exe.sh
-   
+
