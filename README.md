@@ -1,9 +1,9 @@
-# ASCII Art Image Converter
+# AsciiFicate
 
 ![essse](https://github.com/user-attachments/assets/372b9b71-f618-4754-b932-67b42cc2ce44)
 
 
-The **ASCII Art Image Converter** is a Python application that transforms digital images into captivating ASCII art. This tool merges technology and creativity, inviting users to explore imaginative possibilities through a nostalgic art form.
+The **AsciiFicate** is a Python application that transforms digital images into captivating ASCII art. This tool merges technology and creativity, inviting users to explore imaginative possibilities through a nostalgic art form.
 
 ## Features
 
