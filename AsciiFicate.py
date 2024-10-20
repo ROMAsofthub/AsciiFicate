@@ -5,99 +5,99 @@ from PIL import Image
 from time import sleep
 
 def image_to_ascii(image_path, width, invert_colors=False):
-    # Abrir la imagen
+    # Open the image
     img = Image.open(image_path)
 
-    # Verificar si la imagen tiene un canal alfa (transparente)
+    # Check if the image has an alpha channel (transparent)
     has_alpha = img.mode in ('RGBA', 'LA') or (img.mode == 'P' and 'transparency' in img.info)
 
-    # Convertir imágenes en modo de paleta a RGBA
+    # Convert palette images to RGBA
     if img.mode == 'P':
         img = img.convert('RGBA')
 
-    # Calcular la nueva altura para mantener la relación de aspecto
+    # Calculate the new height to maintain the aspect ratio
     aspect_ratio = img.height / img.width
-    height = int(aspect_ratio * width / 2)  # Dividido por 2 para ajustar mejor a ASCII
+    height = int(aspect_ratio * width / 2)  # Divided by 2 to better fit ASCII
 
-    # Redimensionar la imagen
+    # Resize the image
     img = img.resize((width, height))
 
-    # Convertir a escala de grises
-    img = img.convert("LA")  # "LA" para mantener el canal alfa
-    grayscale_img = img.convert("L")  # Convertir a escala de grises
+    # Convert to grayscale
+    img = img.convert("LA")  # "LA" to maintain the alpha channel
+    grayscale_img = img.convert("L")  # Convert to grayscale
 
-    # Definir caracteres ASCII en función de la opacidad
+    # Define ASCII characters based on opacity
     ascii_chars = '@%#*+=-:. '
 
-    # Convertir cada píxel a un carácter ASCII
+    # Convert each pixel to an ASCII character
     ascii_str = ''
     for y in range(height):
         for x in range(width):
             pixel = img.getpixel((x, y))
 
-            # Si hay un canal alfa y es transparente, agregar un espacio
-            if has_alpha and pixel[1] == 0:  # pixel[1] es la opacidad
-                ascii_str += ' '  # Espacio para píxeles transparentes
+            # If there is an alpha channel and it is transparent, add a space
+            if has_alpha and pixel[1] == 0:  # pixel[1] is the opacity
+                ascii_str += ' '  # Space for transparent pixels
             else:
-                brightness = grayscale_img.getpixel((x, y))  # Obtener el brillo
+                brightness = grayscale_img.getpixel((x, y))  # Get brightness
                 if invert_colors:
-                    brightness = 255 - brightness  # Invertir brillo
+                    brightness = 255 - brightness  # Invert brightness
 
-                # Mapear el brillo del píxel a la longitud de los caracteres ASCII
-                brightness_index = brightness * (len(ascii_chars) - 1) // 255  # Normalizar a la longitud de los caracteres ASCII
-                ascii_str += ascii_chars[brightness_index]  # Agregar carácter correspondiente
+                # Map the pixel brightness to the length of the ASCII characters
+                brightness_index = brightness * (len(ascii_chars) - 1) // 255  # Normalize to the length of ASCII characters
+                ascii_str += ascii_chars[brightness_index]  # Add corresponding character
         ascii_str += '\n'
 
     return ascii_str
 
 def main():
-    while True:  # Bucle para repetir el proceso si el usuario lo desea
-        print("Transformador de imágenes a ASCII")
+    while True:  # Loop to repeat the process if the user desires
+        print("Image to ASCII Converter")
 
-        # Listar imágenes en la carpeta
+        # List images in the folder
         images = [f for f in os.listdir('Images') if f.endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp'))]
 
         if not images:
-            print("No hay imágenes en la carpeta 'Images'.")
-            input('-Reiniciar-')
+            print("There are no images in the 'Images' folder.")
+            input('-Restart-')
             subprocess.run("./AsciiFicate.py")
             return
 
-        print("Imágenes disponibles:")
+        print("Available images:")
         for i, filename in enumerate(images):
             print(f"{i + 1}: {filename}")
 
-        # Solicitar al usuario que seleccione una imagen
+        # Ask the user to select an image
         try:
-            choice = int(input("Selecciona el número de la imagen que deseas convertir: ")) - 1
+            choice = int(input("Select the number of the image you want to convert: ")) - 1
             if choice < 0 or choice >= len(images):
-                raise ValueError("Selección no válida.")
+                raise ValueError("Invalid selection.")
             image_path = os.path.join('Images', images[choice])
         except ValueError as e:
             print(f"Error: {e}")
             return
 
-        # Solicitar tamaño y opacidad
+        # Ask for size and opacity
         try:
-            width = int(input("Introduce el ancho de la salida en caracteres: "))
+            width = int(input("Enter the output width in characters: "))
         except ValueError as e:
             print(f"Error: {e}")
             return
 
-        # Preguntar si se desea invertir colores
-        invert_colors = input("¿Deseas invertir los colores? (y/n): ").strip().lower() == 'y'
+        # Ask if the user wants to invert colors
+        invert_colors = input("Do you want to invert the colors? (y/n): ").strip().lower() == 'y'
 
-        print(f"\nConvirtiendo: {images[choice]}")
+        print(f"\nConverting: {images[choice]}")
         ascii_art = image_to_ascii(image_path, width, invert_colors=invert_colors)
         
-        # Imprimir el arte ASCII en la consola
+        # Print the ASCII art in the console
         print(ascii_art)
 
-        # Preguntar si se desea usar en un print
-        use_in_print = input("¿Deseas usar esto en un print? (y/n): ").strip().lower()
+        # Ask if the user wants to use it in a print
+        use_in_print = input("Do you want to use this in a print? (y/n): ").strip().lower()
         if use_in_print in ['y']:
-            print_string = ascii_art.replace('\n', '\\n')  # Escapar saltos de línea
-            print("Puedes usar el siguiente string en tu programa:\n")
+            print_string = ascii_art.replace('\n', '\\n')  # Escape new lines
+            print("You can use the following string in your program:\n")
             print(f'print("{print_string}")\n')
             input("Reset")
             print("...\n")
@@ -109,3 +109,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+# AsciiFicate
+# Ver: 1.0
+# [ROMA]software 
