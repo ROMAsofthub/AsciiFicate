@@ -12,9 +12,9 @@ The **AsciiFicate** is a Python application that transforms digital images into 
 - **Format Support**: Supports various image formats, making it versatile for different types of images.
 - **Output**: Generates ASCII art and saves it to text files.
 
-## Dependencies
-
- - This application utilizes the **Pillow** library for efficient image processing.
+## How to use
+ - Select an image with the numbers above
+ - s
  - To use your own images, copy them in `Images`.
 
 ## Installation
