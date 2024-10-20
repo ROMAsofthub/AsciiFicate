@@ -1,6 +1,7 @@
 # ASCII Art Image Converter
 
-![Diseño sin título](https://github.com/user-attachments/assets/b184d51a-f035-42c3-a6fb-be68742ec0c9)
+![essse](https://github.com/user-attachments/assets/372b9b71-f618-4754-b932-67b42cc2ce44)
+
 
 The **ASCII Art Image Converter** is a Python application that transforms digital images into captivating ASCII art. This tool merges technology and creativity, inviting users to explore imaginative possibilities through a nostalgic art form.
 
