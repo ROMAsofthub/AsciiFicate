@@ -17,7 +17,7 @@ The **AsciiFicate** is a Python application that transforms digital images into 
  - Specify the desired width for the **AsciiFication** of the image.
  - Indicate whether you want the colors to be inverted.
 
-#### To incorporate your own images, place them in the `Images` folder.
+ -- #### To incorporate your own images, place them in the `Images` folder.
 
 ## Installation
 
